@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springUsers
+  name: springUser
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: springUsers
+      app: springUser
   template:
     metadata:
       labels:
-        app: springUsers
+        app: springUser
     spec:
       containers:
         - name: app

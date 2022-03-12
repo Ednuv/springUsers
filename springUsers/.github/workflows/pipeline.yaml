@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{secrets.GKE_PROJECT}}
   GKE_CLUSTER: ednuv-server
   GKE_ZONE: asia-southeast2
-  DEPLOYMENT_NAME: springUsers
+  DEPLOYMENT_NAME: springUser
   IMAGE: springUsers-gke-image
   TAG: 1.0.0
   
