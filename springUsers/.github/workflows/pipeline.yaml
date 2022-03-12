@@ -7,10 +7,10 @@ on:
       
 env:
   PROJECT_ID: ${{secrets.GKE_PROJECT}}
-  GKE_CLUSTER: ednuv-server 
+  GKE_CLUSTER: ednuv-server
   GKE_ZONE: asia-southeast2
   DEPLOYMENT_NAME: springUsers
-  IMAGE: github-actions-gke-image
+  IMAGE: springUsers-gke-image
   TAG: 1.0.0
   
 jobs:
@@ -34,7 +34,7 @@ jobs:
         run: mvn clean package -DskipTests
         
       - name: Setup Google Cloud CLI
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.1.3
+        uses: GoogleCloudPlatform/springUsers/setup-gcloud@0.1.3
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         with:
