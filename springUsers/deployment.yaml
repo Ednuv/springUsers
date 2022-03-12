@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springUsers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springUsers
+  template:
+    metadata:
+      labels:
+        app: springUsers
+    spec:
+      containers:
+        - name: app
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
+          imagePullPolicy: Always
