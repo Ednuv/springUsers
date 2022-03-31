@@ -1,24 +1,20 @@
-package com.example.springUsers.entities.quiz;
-
+package com.example.springUsers.entities.project;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import com.example.springUsers.entities.quiz.Quiz;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="quizcategory")
-public class Category {
-	
+@Table(name="projectcategory")
+public class ProjectCategory {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long cid;
@@ -30,13 +26,13 @@ public class Category {
 	
 	@OneToMany(mappedBy = "category", cascade= CascadeType.ALL)
 	@JsonIgnore
-	private Set<Quiz> quizzes = new LinkedHashSet<>();
+	private Set<ProjectDescription> projectDescription = new LinkedHashSet<>();
 
-	public Category() {
+	public ProjectCategory() {
 
 	}
 
-	public Category(String title, String description) {
+	public ProjectCategory(String title, String description) {
 		this.title = title;
 		this.description = description;
 	}
@@ -65,4 +61,7 @@ public class Category {
 		this.description = description;
 	}
 	
+	
+	
+
 }

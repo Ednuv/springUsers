@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.springUsers.dao.RolesDao;
 import com.example.springUsers.dao.UsersDao;
@@ -19,6 +20,8 @@ public class UserServiceImpl implements UsersService {
 	
 	@Autowired
 	private RolesDao rolesDao;
+	
+	public static String uploadDirectory = System.getProperty("user.dir")+"src/main/resources/image";
 
 	@Override
 	public User createUser(User user, Set<UserRole> userRoles) throws Exception {

@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -22,6 +25,7 @@ public class Role {
 	
 	@OneToMany(cascade= CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="role")
 	@JsonIgnore
+	@NotFound(action = NotFoundAction.IGNORE)
 	private Set<UserRole> userRoles = new HashSet<>();
 	
 	public Role() {

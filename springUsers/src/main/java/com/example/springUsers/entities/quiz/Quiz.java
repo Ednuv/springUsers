@@ -110,12 +110,4 @@ public class Quiz {
 		this.questions = questions;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-
 }

@@ -1,5 +1,6 @@
 package com.example.springUsers.entities;
 
+import java.sql.Blob;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,9 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,6 +29,7 @@ public class User implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotFound(action = NotFoundAction.IGNORE)
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -33,17 +38,32 @@ public class User implements UserDetails{
 	private String email;
 	private String phone;
 	private String profile;
+	@Lob
+	private byte[] picByte;
 	
+	
+	public byte[] getPicByte() {
+		return picByte;
+	}
+
+
+
+	public void setPicByte(byte[] bs) {
+		this.picByte = bs;
+	}
 	@OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="user")
 	@JsonIgnore
+	@NotFound(action = NotFoundAction.IGNORE)
 	private Set<UserRole> userRoles = new HashSet<>();
 	
 	public User() {
 		
 	}
 	
+	
+	
 	public User(Long id, String firstName, String lastName, String username, String password, String email,
-			String phone, String profile, boolean enabled) {
+			String phone, String profile, byte[] picByte, Set<UserRole> userRoles, boolean enabled) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -53,9 +73,11 @@ public class User implements UserDetails{
 		this.email = email;
 		this.phone = phone;
 		this.profile = profile;
+		this.picByte = picByte;
+		this.userRoles = userRoles;
 		this.enabled = enabled;
 	}
-	
+
 	public Set<UserRole> getUserRoles() {
 		return userRoles;
 	}

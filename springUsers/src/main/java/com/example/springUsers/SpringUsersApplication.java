@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import com.example.springUsers.entities.Role;
 import com.example.springUsers.entities.User;
@@ -33,7 +34,7 @@ public class SpringUsersApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		User user = new User();
-		user.setFirstName("Pratik");
+	/*	user.setFirstName("Pratik");
 		user.setLastName("Raj");
 		user.setUsername("praj299@gmail.com");
 		user.setPassword(this.bCryptPasswordEncoder.encode("Patty@50107"));
@@ -47,10 +48,15 @@ public class SpringUsersApplication implements CommandLineRunner {
 		userRole.setRole(role1);
 		userRole.setUser(user);
 		userRoleSet.add(userRole);
-		User user1 = this.userService.createUser(user, userRoleSet); 
+		User user1 = this.userService.createUser(user, userRoleSet); */
 		
 		
 	}
+	
+
+	/*public void addViewController(ViewControllerRegistry registry) {
+		registry.addViewController("/").setViewName("home");
+	}*/
 	
 	
 
